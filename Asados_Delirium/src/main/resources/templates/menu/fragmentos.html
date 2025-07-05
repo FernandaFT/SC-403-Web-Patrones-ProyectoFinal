@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Asados Delirium</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+
+        <!-- Background Menú  -->
+        <section th:fragment="bg-menu" class="position-relative" style="height: 300px; overflow: hidden;">
+            <!-- Imagen de fondo -->
+            <img src="/img/bg-menu.jpg" class="w-100 h-100 position-absolute top-0 start-0" style="object-fit: cover; z-index: 1;" alt="parrilla">
+                <!-- Capa oscura -->
+                <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5); z-index: 2;"></div>
+                <!-- Texto centrado -->
+                <div class="position-absolute top-50 start-50 translate-middle text-white fw-bold"style="z-index: 3; font-size: 3rem;">[[#{menu.titulo}]]</div>
+        </section>
+        <!-- Fragmenteo de Categoría -->
+        <section th:fragment="listado" class="py-5">
+            <div class="container text-center">
+                <h2 class="mb-4">[[#{menu.categoria}]]</h2>
+                <div class="row justify-content-center g-4">
+                    <!-- Cada tarjeta ocupa 6 columnas = 2 por fila -->
+                    <div class="col-md-6" th:each="c : ${menus}">
+                        <a th:href="@{'/menu/categoria/' + ${c.idCategoria}}" class="text-decoration-none">
+                            <div class="card border-0 shadow rounded overflow-hidden position-relative"
+                                 style="height: 300px; cursor: pointer;">
+
+                                <!-- Imagen de fondo -->
+                                <img th:src="@{${c.rutaImagen}}" alt="[[${c.descripcion}]]"
+                                     class="w-100 h-100 position-absolute top-0 start-0"
+                                     style="object-fit: cover; z-index: 1;">
+
+                                    <!-- Capa oscura -->
+                                    <div class="position-absolute bottom-0 start-0 w-100 bg-categoria-menu" style="z-index: 2;">
+                                        <p class="text-white m-0 py-3 fw-bold text-uppercase text-center"
+                                           style="letter-spacing: 1px; z-index: 3; position: relative;">
+                                            [[${c.descripcion}]]
+                                        </p>
+                                    </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

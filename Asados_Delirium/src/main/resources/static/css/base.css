@@ -1,0 +1,14 @@
+.bg-footer{
+    background-color: #D0A772;
+}
+.bg-footer-derechos{
+    background-color: #000000;
+    color: #FFFFFF;
+}
+.bg-menu:hover{
+    background-color: #D0A772;
+    color: #FFFFFF;
+}
+.bg-categoria-menu{
+    background-color: rgba(198, 139, 89, 0.7);
+}
